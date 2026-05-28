@@ -200,9 +200,7 @@ TEMPLATES = [
         "DIRS": [PROJECT_PACKAGE / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
-            "builtins": [
-                "django_hosts.templatetags.hosts_override",
-            ],
+            "builtins": [],
             "context_processors": [
                 "django.contrib.auth.context_processors.auth",
                 "django.template.context_processors.debug",
