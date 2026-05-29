@@ -1,4 +1,4 @@
-{% load i18n %}{% spaceless %}{% url 'fundraising:index' as fundraising_url %}
+{% load hosts i18n %}{% spaceless %}{% host_url 'fundraising:index' host 'www' as fundraising_url %}
 {% blocktranslate with name=donation.donor.name_with_fallback url=fundraising_url %}
 Hi {{ name }},
 

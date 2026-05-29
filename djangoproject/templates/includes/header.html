@@ -4,7 +4,7 @@
 {% endif %}
 <header id="top">
   <div class="container container--flex--wrap--mobile">
-    <a class="logo" href="{% url 'homepage' %}">Django</a>
+    <a class="logo" href="{% host_url 'homepage' host 'www' %}">Django</a>
     <p class="meta">The web framework for perfectionists with deadlines.</p>
     <button class="menu-button">
       <i class="icon icon-reorder" aria-hidden="true"></i>
@@ -14,16 +14,16 @@
       <span id="navigation-header" class="visuallyhidden">Main navigation</span>
       <ul>
         <li{% if 'start' in request.path %} class="active"{% endif %}>
-          <a href="{% url 'overview' %}">Overview</a>
+          <a href="{% host_url 'overview' host 'www' %}">Overview</a>
         </li>
         <li{% if 'download' in request.path %} class="active"{% endif %}>
-          <a href="{% url 'download' %}">Download</a>
+          <a href="{% host_url 'download' host 'www' %}">Download</a>
         </li>
         <li{% if request.host.name == 'docs' and 'search' not in request.path %} class="active"{% endif %}>
-          <a href="{% block doc_url %}{% url 'homepage' host 'docs' %}{% endblock %}">Documentation</a>
+          <a href="{% block doc_url %}{% host_url 'homepage' host 'docs' %}{% endblock %}">Documentation</a>
         </li>
         <li{% if 'weblog' in request.path %} class="active"{% endif %}>
-          <a href="{% url 'weblog:index' %}">News</a>
+          <a href="{% host_url 'weblog:index' host 'www' %}">News</a>
         </li>
         <li>
           <a href="https://github.com/django/django" target="_blank" rel="noopener">Code</a>
@@ -32,13 +32,13 @@
           <a href="https://code.djangoproject.com/">Issues</a>
         </li>
         <li{% if 'community' in request.path or 'conduct' in request.path %} class="active"{% endif %}>
-          <a href="{% url 'community-index' %}">Community</a>
+          <a href="{% host_url 'community-index' host 'www' %}">Community</a>
         </li>
         <li{% if 'foundation' in request.path %} class="active"{% endif %}>
-          <a href="{% url 'homepage' %}foundation/">Foundation</a>
+          <a href="{% host_url 'homepage' host 'www' %}foundation/">Foundation</a>
         </li>
         <li{% if 'fundraising' in request.path %} class="active"{% endif %}>
-          <a href="{% url 'fundraising:index' %}">&#9829; Donate</a>
+          <a href="{% host_url 'fundraising:index' host 'www' %}">&#9829; Donate</a>
         </li>
       </ul>
     </nav>

@@ -8,36 +8,36 @@
         <div class="col-learn-more">
           <h3>Learn More</h3>
           <ul>
-            <li><a href="{% url 'overview' %}">About Django</a></li>
-            {% comment %}<li><a href="{% url 'case_study_index' %}">Case Studies</a></li>{% endcomment %}
-            <li><a href="{% url 'start' %}">Getting Started with Django</a></li>
-            <li><a href="{% url 'members:teams' %}">Team Organization</a></li>
-            <li><a href="{% url 'homepage' %}foundation/">Django Software Foundation</a></li>
-            <li><a href="{% url 'code_of_conduct' %}">Code of Conduct</a></li>
-            <li><a href="{% url 'diversity' %}">Diversity Statement</a></li>
+            <li><a href="{% host_url 'overview' host 'www' %}">About Django</a></li>
+            {% comment %}<li><a href="{% host_url 'case_study_index' host 'www' %}">Case Studies</a></li>{% endcomment %}
+            <li><a href="{% host_url 'start' host 'www' %}">Getting Started with Django</a></li>
+            <li><a href="{% host_url 'members:teams' host 'www' %}">Team Organization</a></li>
+            <li><a href="{% host_url 'homepage' host 'www' %}foundation/">Django Software Foundation</a></li>
+            <li><a href="{% host_url 'code_of_conduct' host 'www' %}">Code of Conduct</a></li>
+            <li><a href="{% host_url 'diversity' host 'www' %}">Diversity Statement</a></li>
           </ul>
         </div>
 
         <div class="col-get-involved">
           <h3>Get Involved</h3>
           <ul>
-            <li><a href="{% url 'community-index' %}">Join a Group</a></li>
-            <li><a href="{% url 'document-detail' lang='en' version='dev' url="internals/contributing" host 'docs' %}">Contribute
+            <li><a href="{% host_url 'community-index' host 'www' %}">Join a Group</a></li>
+            <li><a href="{% host_url 'document-detail' lang='en' version='dev' url="internals/contributing" host 'docs' %}">Contribute
               to Django</a></li>
             <li><a
-              href="{% url 'document-detail' lang='en' version='dev' url="internals/contributing/bugs-and-features" host 'docs' %}">Submit
+              href="{% host_url 'document-detail' lang='en' version='dev' url="internals/contributing/bugs-and-features" host 'docs' %}">Submit
               a Bug</a></li>
             <li><a
-              href="{% url 'document-detail' lang='en' version='dev' url="internals/security" host 'docs' %}#reporting-security-issues">Report
+              href="{% host_url 'document-detail' lang='en' version='dev' url="internals/security" host 'docs' %}#reporting-security-issues">Report
               a Security Issue</a></li>
-            <li><a href="{% url 'members:individual-members' %}">Individual membership</a></li>
+            <li><a href="{% host_url 'members:individual-members' host 'www' %}">Individual membership</a></li>
           </ul>
         </div>
 
         <div class="col-get-help">
           <h3>Get Help</h3>
           <ul>
-            <li><a href="{% url 'document-detail' lang='en' version='stable' url='faq' host 'docs' %}">Getting Help FAQ</a>
+            <li><a href="{% host_url 'document-detail' lang='en' version='stable' url='faq' host 'docs' %}">Getting Help FAQ</a>
             </li>
             <li><a href="https://chat.djangoproject.com" target="_blank">Django Discord</a></li>
             <li><a href="https://forum.djangoproject.com/" target="_blank">Official Django Forum</a></li>
@@ -52,17 +52,17 @@
             <li><a href="https://fosstodon.org/@django" rel="me">Fediverse (Mastodon)</a></li>
             <li><a href="https://bsky.app/profile/djangoproject.com">Bluesky</a></li>
             <li><a href="https://www.linkedin.com/company/django-software-foundation">LinkedIn</a></li>
-            <li><a href="{% url 'weblog-feed' %}">News RSS</a></li>
+            <li><a href="{% host_url 'weblog-feed' host 'www' %}">News RSS</a></li>
           </ul>
         </div>
 
         <div class="col-support-us">
           <h3>Support Us</h3>
           <ul>
-            <li><a href="{% url "fundraising:index" %}">Sponsor Django</a></li>
-            <li><a href="{% url 'members:corporate-members' %}">Corporate membership</a></li>
+            <li><a href="{% host_url 'fundraising:index' host 'www' %}">Sponsor Django</a></li>
+            <li><a href="{% host_url 'members:corporate-members' host 'www' %}">Corporate membership</a></li>
             <li><a href="https://django.threadless.com/" target="_blank">Official merchandise store</a></li>
-            <li><a href="{% url 'fundraising:index' %}#benevity-giving">Benevity Workplace Giving Program</a></li>
+            <li><a href="{% host_url 'fundraising:index' host 'www' %}#benevity-giving">Benevity Workplace Giving Program</a></li>
           </ul>
         </div>
       </div>
@@ -71,11 +71,11 @@
   <div class="footer">
     <div class="container">
       <div class="footer-logo">
-        <a class="logo" href="{% url 'homepage' %}">Django</a>
+        <a class="logo" href="{% host_url 'homepage' host 'www' %}">Django</a>
       </div>
       <ul class="thanks">
         <li>
-          <span>Hosting by</span> <a class="in-kind-donors" href="{% url 'fundraising:index' %}#in-kind-donors">In-kind
+          <span>Hosting by</span> <a class="in-kind-donors" href="{% host_url 'fundraising:index' host 'www' %}#in-kind-donors">In-kind
             donors</a>
         </li>
         <li class="design"><span>Design by</span> <a class="threespot" href="https://www.threespot.com">Threespot</a>

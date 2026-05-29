@@ -1,6 +1,6 @@
 {% load hosts i18n %}
 <search class="search form-input" aria-labelledby="docs-search-label">
-  <form action="{% url 'document-search' version=version lang=lang host 'docs' %}">
+  <form action="{% host_url 'document-search' version=version lang=lang host 'docs' %}">
     <label id="docs-search-label" class="visuallyhidden" for="{{ form.q.id_for_label }}">{{ form.q.field.widget.attrs.placeholder }}</label>
     {{ form.q }}
     <input type="hidden" name="category" value="{{ active_category }}">

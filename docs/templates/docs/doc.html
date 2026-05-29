@@ -5,24 +5,24 @@
 
 {% block og_title %}{{ doc.title|striptags }} | {% translate "Django documentation" %}{% endblock %}
 
-{% block doc_url %}{% url 'document-index' lang=lang version=version host 'docs' %}{% endblock %}
+{% block doc_url %}{% host_url 'document-index' lang=lang version=version host 'docs' %}{% endblock %}
 
 {% block link_rel_tags %}
   {% if docurl %}
     {% if "internals" in docurl and lang == "en" %} {# The canonical version of "internals" is the dev docs (but only for English, since the dev docs are never translated). #}
-      {% url 'document-detail' lang=lang version='dev' url=docurl host 'docs' as canonical_url %}
+      {% host_url 'document-detail' lang=lang version='dev' url=docurl host 'docs' as canonical_url %}
     {% else %}
-      {% url 'document-detail' lang=lang version=canonical_version url=docurl host 'docs' as canonical_url %}
+      {% host_url 'document-detail' lang=lang version=canonical_version url=docurl host 'docs' as canonical_url %}
     {% endif %}
   {% else %}
-    {% url 'document-index' lang=lang version=canonical_version host 'docs' as canonical_url %}
+    {% host_url 'document-index' lang=lang version=canonical_version host 'docs' as canonical_url %}
   {% endif %}
   <link rel="canonical" href="{{ canonical_url }}">
   {% for available_lang in available_languages %}
     {% if docurl %}
-      {% url 'document-detail' lang=available_lang version=version url=docurl host 'docs' as alternate_url %}
+      {% host_url 'document-detail' lang=available_lang version=version url=docurl host 'docs' as alternate_url %}
     {% else %}
-      {% url 'document-index' lang=available_lang version=version host 'docs' as alternate_url %}
+      {% host_url 'document-index' lang=available_lang version=version host 'docs' as alternate_url %}
     {% endif %}
     <link rel="alternate"
           hreflang="{{ available_lang }}"
@@ -31,7 +31,7 @@
 
   <link rel="search"
         type="application/opensearchdescription+xml"
-        href="{% url 'document-search-description' lang=lang version=version host 'docs' %}"
+        href="{% host_url 'document-search-description' lang=lang version=version host 'docs' %}"
         title="{% translate "Django documentation" %}">
 {% endblock link_rel_tags %}
 
@@ -57,7 +57,7 @@
   <div id="version-switcher">
     <ul id="faq-link">
       <li class="current-link">
-        <a href="{% url 'document-detail' lang=lang version=version url='faq/help' host 'docs' %}">
+        <a href="{% host_url 'document-detail' lang=lang version=version url='faq/help' host 'docs' %}">
           <span>{% translate "Getting Help" %}</span>
         </a>
       </li>
@@ -70,9 +70,9 @@
         {% if lang != available_lang %}
           <li class="other">
             {% if docurl %}
-              {% url 'document-detail' lang=available_lang version=version url=docurl host 'docs' as other_url %}
+              {% host_url 'document-detail' lang=available_lang version=version url=docurl host 'docs' as other_url %}
             {% else %}
-              {% url 'document-index' lang=available_lang version=version host 'docs' as other_url %}
+              {% host_url 'document-index' lang=available_lang version=version host 'docs' as other_url %}
             {% endif %}
             <a href="{{ other_url }}{% if searchparams %}search/?{{ searchparams }}{% endif %}">{{ available_lang }}</a>
           </li>
@@ -91,9 +91,9 @@
         {% if version != other_version %}
           <li class="other">
             {% if docurl %}
-              {% url 'document-detail' lang=lang version=other_version url=docurl host 'docs' as other_url %}
+              {% host_url 'document-detail' lang=lang version=other_version url=docurl host 'docs' as other_url %}
             {% else %}
-              {% url 'document-index' lang=lang version=other_version host 'docs' as other_url %}
+              {% host_url 'document-index' lang=lang version=other_version host 'docs' as other_url %}
             {% endif %}
             <a href="{{ other_url }}{% if searchparams %}search/?{{ searchparams }}{% endif %}">{{ other_version }}</a>
           </li>
@@ -151,9 +151,9 @@
             {% if doc.next %}
               <li>{% translate "Next:" %} <a rel="next" href="{{ doc.next.link }}">{{ doc.next.title|safe }}</a></li>
             {% endif %}
-            <li><a href="{% url 'document-detail' lang=lang version=version url="contents" host 'docs' %}">{% translate "Table of contents" %}</a></li>
+            <li><a href="{% host_url 'document-detail' lang=lang version=version url="contents" host 'docs' %}">{% translate "Table of contents" %}</a></li>
             {% for doc, title, accesskey, shorttitle in env.rellinks %}
-              <li><a href="{% url 'document-detail' lang=lang version=version url=doc host 'docs' %}">{{ title }}</a></li>
+              <li><a href="{% host_url 'document-detail' lang=lang version=version url=doc host 'docs' %}">{{ title }}</a></li>
             {% endfor %}
           {% endblock browse %}
         </ul>
@@ -165,7 +165,7 @@
         <h3 id="breadcrumbs-header">{% translate "You are here:" %}</h3>
         <ul>
           <li>
-            <a href="{% url 'document-index' lang=lang version=version host 'docs' %}">{% blocktranslate %}Django {{ version }} documentation{% endblocktranslate %}</a>
+            <a href="{% host_url 'document-index' lang=lang version=version host 'docs' %}">{% blocktranslate %}Django {{ version }} documentation{% endblocktranslate %}</a>
             {% for p in doc.parents %}
               <ul><li><a href="{{ p.link }}">{{ p.title|safe }}</a>
             {% endfor %}
@@ -180,10 +180,10 @@
       <section aria-labelledby="getting-help-sidebar">
         <h3 id="getting-help-sidebar">{% translate "Getting help" %}</h3>
         <dl class="list-links">
-          <dt><a href="{% url 'document-detail' lang=lang version=version url="faq" host 'docs' %}">{% translate "FAQ" %}</a></dt>
+          <dt><a href="{% host_url 'document-detail' lang=lang version=version url="faq" host 'docs' %}">{% translate "FAQ" %}</a></dt>
           <dd>{% blocktranslate %}Try the FAQ — it's got answers to many common questions.{% endblocktranslate %}</dd>
 
-          <dt><a href="{% url 'document-detail' lang='en' version='stable' url='genindex' host 'docs' %}">{% translate "Index" %}</a>, <a href="{% url 'document-detail' lang='en' version='stable' url='py-modindex' host 'docs' %}">{% translate "Module Index" %}</a>, or <a href="{% url 'document-detail' lang='en' version='stable' url='contents' host 'docs' %}">{% translate "Table of Contents" %}</a></dt>
+          <dt><a href="{% host_url 'document-detail' lang='en' version='stable' url='genindex' host 'docs' %}">{% translate "Index" %}</a>, <a href="{% host_url 'document-detail' lang='en' version='stable' url='py-modindex' host 'docs' %}">{% translate "Module Index" %}</a>, or <a href="{% host_url 'document-detail' lang='en' version='stable' url='contents' host 'docs' %}">{% translate "Table of Contents" %}</a></dt>
           <dd>{% blocktranslate %}Handy when looking for specific information.{% endblocktranslate %}</dd>
 
           <dt><a href="https://chat.djangoproject.com">{% translate "Django Discord Server" %}</a></dt>

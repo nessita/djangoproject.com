@@ -15,7 +15,7 @@
       <p>{% translate "It’s <em>quick &amp; easy</em> to get up and running with <em>Django</em>." %}</p>
     </div>
     <div class="col one-third last-child">
-      <a href="{% url 'download' %}" class="cta">
+      <a href="{% host_url 'download' %}" class="cta">
         {% blocktranslate trimmed %}Download <em>version {{ DJANGO_VERSION }}</em>{% endblocktranslate %}
       </a>
     </div>
@@ -26,8 +26,8 @@
 
   <div class="section">
     <h1>{% translate "Getting started with Django" %}</h1>
-    {% url 'document-detail' lang='en' version='stable' url='intro/tutorial01' host 'docs' as tutorial1_url %}
-    {% url 'homepage' host 'docs' as docs_homepage_url %}
+    {% host_url 'document-detail' lang='en' version='stable' url='intro/tutorial01' host 'docs' as tutorial1_url %}
+    {% host_url 'homepage' host 'docs' as docs_homepage_url %}
     <p>
       {% blocktranslate trimmed %}
         Depending how new you are to Django, you can <a href="{{ tutorial1_url }}">try a tutorial</a>, or just
@@ -38,7 +38,7 @@
     <p>
       {% translate "Want to learn more about Django? Read the overview to see whether Django is right for your project." %}
     </p>
-    <a class="link-readmore" href="{% url 'overview' %}">{% translate "Django overview" %}</a>
+    <a class="link-readmore" href="{% host_url 'overview' %}">{% translate "Django overview" %}</a>
   </div>
 
   <div class="section">
@@ -50,7 +50,7 @@
         the introduction.
       {% endblocktranslate %}
     </p>
-    <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='intro/install' host 'docs' %}">
+    <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='intro/install' host 'docs' %}">
       {% translate "Django installation guide" %}
     </a>
   </div>
@@ -84,7 +84,7 @@
   <div class="section">
     <h2><span>{% translate "Join the community</span>" %}</h2>
       <p>
-        {% url 'community-index' as community_index %}
+        {% host_url 'community-index' as community_index %}
         {% blocktranslate trimmed %}
           You can help <a href="{{ community_index }}">make us better</a>. Find out about upcoming Django events, learn
           what’s on other Django developers’ minds, find and post jobs, and more.
@@ -106,7 +106,7 @@
                 still write SQL if needed.
               {% endblocktranslate %}
             </p>
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='topics/db/models' host 'docs' %}">
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='topics/db/models' host 'docs' %}">
               {% translate "Read more" %}
             </a>
         {# fmt:off #}
@@ -142,7 +142,7 @@ class Member(models.Model):
           <div class="collapsing-content">
             <p>A clean, elegant URL scheme is an important detail in a high-quality web application. Django encourages beautiful URL design and doesn’t put any cruft in URLs, like .php or .asp.</p>
             <p>To design URLs for an application, you create a Python module called a URLconf. Like a table of contents for your app, it contains a simple mapping between URL patterns and your views.</p>
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='topics/http/urls' host 'docs' %}">Read more</a>
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='topics/http/urls' host 'docs' %}">Read more</a>
         {# fmt:off #}
         {% pygment 'python' %}
 from django.urls import path
@@ -176,7 +176,7 @@ def band_listing(request):
                 But it is also flexible and highly extensible, allowing developers to augment the template language as needed.
               {% endblocktranslate %}
             </p>
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='topics/templates' host 'docs' %}">Read more</a>
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='topics/templates' host 'docs' %}">Read more</a>
       {# No need to escape the HTML: pygment takes care of that #}
             {% pygment 'django' %}
 {% verbatim %}
@@ -208,7 +208,7 @@ def band_listing(request):
                 existing models and use those forms to create and update data.
               {% endblocktranslate %}
             </p>
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='topics/forms' host 'docs' %}">Read more</a>
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='topics/forms' host 'docs' %}">Read more</a>
         {# fmt:off #}
         {% pygment 'python' %}
 from django import forms
@@ -232,7 +232,7 @@ class BandContactForm(forms.Form):
                 accounts and safely log in/out.
               {% endblocktranslate %}
             </p>
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='topics/auth' host 'docs' %}">{% translate "Read more" %}</a>
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='topics/auth' host 'docs' %}">{% translate "Read more" %}</a>
         {# fmt:off #}
         {% pygment 'python' %}
 from django.contrib.auth.decorators import login_required
@@ -256,7 +256,7 @@ def my_protected_view(request):
                 use to start managing content on your site. It’s easy to set up and provides many hooks for customization.
               {% endblocktranslate %}
             </p>
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='ref/contrib/admin' host 'docs' %}">{% translate "Read more" %}</a>
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='ref/contrib/admin' host 'docs' %}">{% translate "Read more" %}</a>
         {# fmt:off #}
         {% pygment 'python' %}
 from bands.models import Band, Member
@@ -285,7 +285,7 @@ class MemberAdmin(admin.ModelAdmin):
                 to localize web applications for particular users according to their preferences.
               {% endblocktranslate %}
             </p>
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='topics/i18n' host 'docs' %}">{% translate "Read more" %}</a>
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='topics/i18n' host 'docs' %}">{% translate "Read more" %}</a>
         {# fmt:off #}
         {% pygment 'python' %}
 from django.shortcuts import render
@@ -342,7 +342,7 @@ def homepage(request):
               <li>{% translate "Remote code execution" %}</li>
             </ul>
 
-            <a class="link-readmore" href="{% url 'document-detail' lang='en' version='stable' url='topics/security' host 'docs' %}">{% translate "Read more" %}</a>
+            <a class="link-readmore" href="{% host_url 'document-detail' lang='en' version='stable' url='topics/security' host 'docs' %}">{% translate "Read more" %}</a>
 
           </div>
         </li>

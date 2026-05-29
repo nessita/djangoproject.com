@@ -8,7 +8,7 @@
 {% block content %}
   <h2>{% translate "Page removed." %}</h2>
 
-  {% url 'homepage' host 'docs' as docs_url %}
+  {% host_url 'homepage' host 'docs' as docs_url %}
   <p>
     {% blocktranslate trimmed %}
       Sorry, we've removed some of parts of the site that were completely out

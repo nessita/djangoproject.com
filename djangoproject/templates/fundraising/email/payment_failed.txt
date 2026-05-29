@@ -1,4 +1,4 @@
-{% load i18n %}{% spaceless %}{% url 'fundraising:manage-donations' donation.donor.pk as manage_url %}
+{% load hosts i18n %}{% spaceless %}{% host_url 'fundraising:manage-donations' donation.donor.pk host 'www' as manage_url %}
 {% blocktranslate with name=donation.donor.name_with_fallback %}
 Hi {{ name }},
 
