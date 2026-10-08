@@ -2603,6 +2603,37 @@ h2+.list-link-soup {
 
 }
 
+// Docs home page groups are nested lists so that assistive technology announce
+// which links belong to which label. Inline them to keep a compact map.
+.index-toc {
+    > li > p {
+        display: inline;
+
+        &::after {
+            content: ": ";
+        }
+    }
+
+    > li > ul {
+        display: inline;
+        // The site's list indent still applies once inline.
+        padding-left: 0;
+
+        > li {
+            display: inline;
+
+            > p {
+                display: inline;
+            }
+
+            // Empty alt text keeps the separator out of the a11y tree.
+            + li::before {
+                content: " | " / "";
+            }
+        }
+    }
+}
+
 dl.function,
 dl.class,
 dl.method,
