@@ -1,5 +1,9 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n static %}
+
+{% block head_css %}
+  <link rel="stylesheet" href="{% static "css/lib/console-tabs.css" %}">
+{% endblock head_css %}
 
 {% block analytics %}
   <!-- Privacy-friendly analytics by Plausible -->
